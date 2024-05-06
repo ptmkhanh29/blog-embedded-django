@@ -1,0 +1,263 @@
+@font-face {
+    font-family: 'Hack';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/HackNerdFontMono-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'HackNerdFontPropo-Regular';
+    src: url('../fonts/HackNerdFontPropo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HackNerdFont-Regular';
+    src: url('../fonts/HackNerdFont-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+}
+.page-wrapper {
+    display: flex; /* Aligns the sidebar and content side by side */
+}
+.header-container {
+    z-index: 1000;
+    height: 106px;
+}
+.content-container {
+    padding: 5px 0 20px 0; /* Padding inside */
+    box-sizing: border-box; /* Ensures padding is included in width */
+    font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
+    line-height: 2.0;
+    background-color: var(--content-body-color);
+}/*
+  Header
+*/
+.header {
+	padding-top: 0;
+	padding-bottom: 0.5rem;
+	margin-bottom: 0.4rem;
+	font-family: 'Hack', monospace;
+	position: relative;
+}
+.header a:hover {
+	color: black;
+}
+.header .header-title a {
+    padding-top: 0.1rem;
+	font-size: 1.7rem;
+	text-decoration: none;
+	color: var(--header-title-color);
+    font-family: var(--font-header);
+}
+.header .header-title a:hover {
+    color: black;       /* Thay đổi màu thành đen khi hover */
+}
+.header .header-subtitle {
+	color: #999;
+	font-family: var(--font-header);
+	font-size: 1.0rem;
+	letter-spacing: 0.25px;
+	margin-right: auto;
+	position: absolute;
+	left: 0;
+}
+.header .menu {
+	padding-top: 0rem;
+	display: block;
+}
+.header .menu-content {
+	padding-top: 0.8rem;
+	font-family: var(--font-header);
+	margin-left: auto;
+	position: absolute;
+	left: auto;
+    right: 0;
+}
+.header .menu-content a {
+	color: var(--header-menu-tag);
+	font-size: 1rem;
+}
+
+.header .menu-content a.active {
+    color: var(--header-menu-tag-active);                   /* Màu của thẻ Home, Blog,...*/
+    border-bottom: 6.0px solid #00FF00;
+	display: inline-block;
+	font-size: 1rem;
+	line-height: 1;
+    margin: 0;
+    padding-bottom: 2px;
+}
+
+.menu-divider {
+	width: 100%;
+    border: 1px solid gray;
+	position: relative;
+	margin-top: 50px;
+}
+
+.social-icons {
+	display: flex;
+    justify-content: flex-end;
+}
+.social-icons a {
+	color: #999;
+}
+.icon-border {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    object-fit: cover;
+    padding: 3px;
+}
+
+.typing {
+    font-family: var(--font-header);
+    font-size: 5vw;
+    color: #d7b94c;
+    position: relative;
+    background: var(--bg-color);
+    overflow: hidden;
+}
+
+.typing::after {
+    content: "|";
+    position: absolute;
+    right: 0;
+    width: 100%;
+    color: #FFD700;
+    background: var(--bg-color);
+    animation: typing 3s steps(16) forwards, caret 1s infinite;
+    top: 0; /* Đặt phần này lên đầu, phủ đầy chiều cao */
+    height: 100%; /* Phủ đầy chiều cao của phần tử cha */
+}
+
+@keyframes typing {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@keyframes caret {
+    50% { color: transparent; }
+}
+/* Tongle mode switcher dark/light theme */
+.header .mode {
+    float: left;
+    position: relative;
+    margin: 10px auto;
+    width: 42px;
+    height: 22px;
+    background: #F1F2F4;
+    border-radius: 20px;
+    cursor: pointer;
+    left: 0;
+    right: auto;
+}
+
+.header .mode:after {
+    content: "☀️";
+    position: absolute;
+    top: 0;
+    left: 4px;
+    font-size: 14px;
+    height: 22px;
+    line-height: 23px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.header .mode.active {
+    background: #0771ca;
+}
+
+.header .mode.active:after {
+    content: "🌛";
+    transform: translateX(20px);
+}
+
+.header .mode span {
+    position: absolute;
+    z-index: 1;
+    margin: 2px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+}
+.header .mode.active span {
+    transform: translateX(0px);
+}
+
+/* Responsive for header*/
+@media (max-width: 768px) {
+    .container {
+        max-width: 90vw;
+        margin-right: auto;
+    }
+    .header-container {
+  	    display: block; /* Show header in mobile view */
+		margin-left: auto;
+		margin-right: auto;
+    }
+    .content-container {
+        display: block; /* Show header in mobile view */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (max-width: 30em) {
+	.social-icons {
+		display: flex;
+  	    justify-content: flex-end;
+		padding-top: 0;
+	}
+	.menu-content {
+		margin-bottom: 5px;
+	}
+}
+/*********************************************************/
+/*
+  Footer
+*/
+
+.footer {
+	color: #999;
+	text-align: center;
+	margin: 2rem;
+}
+.footer a {
+	color: #999;
+	padding: 10px;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: #333;
+}
+.footer-description {
+	display: block;
+	margin-top: 3px;
+	margin-bottom: 1rem;
+	color: #999;
+	font-family: "Quattrocento Sans", sans-serif;
+	font-size: 0.8rem;
+}
+/*********************************************************/
+/*
+  Another module
+*/
+.custom-border-top-line {
+    border-top: 2.0px solid var(--line-sidebar-color);
+    width: 100%;                /* Hoặc bất kỳ giá trị nào bạn muốn */
+    margin-top: 0;              /* Đặt khoảng cách trên */
+    margin-bottom: 0;           /* Đặt khoảng cách dưới */
+}

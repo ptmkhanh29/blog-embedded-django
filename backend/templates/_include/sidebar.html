@@ -1,0 +1,38 @@
+{% load static %}
+<!-- Sidebar content -->
+<img src="{% static 'images/profile.jpg' %}" alt="Profile Image"> <!-- Provide a valid image path or URL -->
+  <div class="site-title" role="heading" aria-level="1">
+    <a href="{{ '/' }}">Khanh Phan</a>
+  </div>
+  <div class="site-subtitle fst-italic mb-0">Software Engineer|DevOps Engineer|Embedded Software Engineer</div>
+<div class="w-100 d-flex justify-content-center">
+        <div class="custom-border-top-line"></div>
+    </div>
+  <p>Hello! I'm [Your Name].</p> <!-- Replace with actual content or use template variables -->
+  <p>Currently working as a [Your Position].</p> <!-- Replace or use variables -->
+  <p>Based in Vietnam.</p>
+
+<div class="mode" id="mode-switcher" onclick="toggleNightMode();">
+  <span></span>
+</div>
+<script>
+  function toggleNightMode() {
+      if (document.documentElement.getAttribute('data-theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.getElementById('mode-switcher').classList.add('active');
+          localStorage.setItem("theme", "dark");
+      } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.getElementById('mode-switcher').classList.remove('active');
+          localStorage.setItem("theme", "light");
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark') {
+          document.getElementById('mode-switcher').classList.add('active');
+      }
+  });
+</script>

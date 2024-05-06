@@ -1,0 +1,50 @@
+{% load static %}
+<header class="header">
+  <h3 class="header-title">
+      <a href="{{ domain.url }}" class="typing">~/home/khanhphan</a>
+      <div class="menu">
+          <div class="header-subtitle">Software Engineer</div>
+            <nav class="social-icons">
+                {% for key, value in site.items %}
+                    {% if value.url %}
+                        <a href="{{ value.url }}/" target="_blank">
+                            <img src="{% static value.icon %}" alt="{{ key }} icon" class="icon-border">
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+      </div>
+      <div class="menu-content">
+            {% for item in menu %}
+                <a href="{{ domain.url }}{% if item.url %}{{ item.url }}/{% endif %}"
+                   class="{% if request.path == '/' and not item.url or request.path == '/'|add:item.url|add:'/' %}active{% endif %}">
+                    {{ item.name }}
+                </a>
+            {% endfor %}
+      </div>
+      <div class="mode" id="mode-switcher" onclick="toggleNightMode();">
+        <span></span>
+      </div>
+  </h3>
+</header>
+<script>
+  function toggleNightMode() {
+      if (document.documentElement.getAttribute('data-theme') === 'light') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          document.getElementById('mode-switcher').classList.add('active');
+          localStorage.setItem("theme", "dark");
+      } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.getElementById('mode-switcher').classList.remove('active');
+          localStorage.setItem("theme", "light");
+      }
+  }
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      if (currentTheme === 'dark') {
+          document.getElementById('mode-switcher').classList.add('active');
+      }
+  });
+</script>
